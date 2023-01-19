@@ -1,26 +1,17 @@
 const expressLoader = require('./express');
-const express = require('express');
-const router = express.Router();
-
-//Temp userService for intial db connection setup
-const UserService = require('../services/UserService');
-const UserServiceInstance = new UserService();
+const passportLoader = require('./passport');
+const routeLoader = require('../routes');
 
 module.exports = async (app) => {
 
   // Load Express middlewares
   const expressApp = await expressLoader(app);
 
-  //Test route
-  app.get('/users/:userId', async (req, res, next) => {
-    try {
-      const { userId } = req.params;
-      const response = await UserServiceInstance.get({ id: userId });
-      res.status(200).send(response);
-    } catch(err) {
-      next(err);
-    }
-  });
+  // Load Passport middleware
+  const passport = await passportLoader(expressApp);
+
+  // Load API route handlers
+  await routeLoader(app, passport);
 
   // Error Handler
   app.use((err, req, res, next) => {
