@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
 
+const loaders =  require('./loaders');
+
 const { PORT } = require('./config');
 
 async function startServer() {
 
-    //Init application loaders
-    app.get('/', (req, res) => {
-        res.send('Hello World!')
-    })
+    // Init application loaders
+    loaders(app);
 
     //Start the server
     app.listen(PORT, () => {
