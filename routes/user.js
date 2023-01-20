@@ -20,4 +20,17 @@ module.exports = (app) => {
     }
   });
 
+  router.put('/:userId', async (req, res, next) => {
+
+    try{
+      const { userId } = req.params;
+      const data = req.body;
+
+      const response = await UserServiceInstance.update({ id: userId, ...data });
+      res.status(200).send(response);
+    } catch(err){
+      next(err);
+    }
+  });
+
 }

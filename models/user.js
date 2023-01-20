@@ -27,6 +27,33 @@ module.exports = class UserModel {
       throw new Error(err);
     }
   }
+
+  /**
+   * Updates a user record
+   * @param {Object}      data  [User data]
+   * @returns {Object|null}     [Updated user record]
+   */
+  async updateUser(data){
+    try{
+
+      const { id, ...params } = data;
+
+      //Generate SQL statement
+      const condition = pgp.as.format(`WHERE id = ${1} RETURNING *`, { id });
+      const statement = pgp.helpers.update(params, null, 'users') + condition;
+
+      //Execute SQL statement
+      const result = await db.query(statement);
+
+      if(result.rows?.length){
+        return result.rows[0];
+      }
+
+      return null;
+    } catch (err){
+      throw new Error(err);
+    }
+  }
   
   /**
    * Gets a user record by Enauk
