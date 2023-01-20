@@ -7,14 +7,14 @@ const AuthServiceInstance = new AuthService();
 module.exports = (app) => {
 
   // Initialize passport
-  app.use(passport.initialize());  
+  app.use(passport.initialize());
   app.use(passport.session());
-  
+
   // Set method to serialize data to store in cookie
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
-  
+
   // Set method to deserialize data stored in cookie and attach to req.user
   passport.deserializeUser((id, done) => {
     done(null, { id });
@@ -26,7 +26,7 @@ module.exports = (app) => {
       try {
         const user = await AuthServiceInstance.login({ email: username, password });
         return done(null, user);
-      } catch(err) {
+      } catch (err) {
         return done(err);
       }
     }

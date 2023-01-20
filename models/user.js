@@ -8,8 +8,8 @@ module.exports = class UserModel {
    * @param {Object}        data  [User data]
    * @returns {Object|null}     [Created user record]
    */
-  async createUser(data){
-    try{
+  async createUser(data) {
+    try {
 
       //Generate SQL statement
       const statement = pgp.helpers.insert(data, null, 'users') + 'RETURNING *';
@@ -17,13 +17,13 @@ module.exports = class UserModel {
       //Execute SQL statement
       const result = await db.query(statement);
 
-      if(result.rows?.length){
+      if (result.rows?.length) {
         return result.rows[0];
       }
 
       return null;
 
-    }catch(err){
+    } catch (err) {
       throw new Error(err);
     }
   }
@@ -33,8 +33,8 @@ module.exports = class UserModel {
    * @param {Object}      data  [User data]
    * @returns {Object|null}     [Updated user record]
    */
-  async updateUser(data){
-    try{
+  async updateUser(data) {
+    try {
 
       const { id, ...params } = data;
 
@@ -45,16 +45,16 @@ module.exports = class UserModel {
       //Execute SQL statement
       const result = await db.query(statement);
 
-      if(result.rows?.length){
+      if (result.rows?.length) {
         return result.rows[0];
       }
 
       return null;
-    } catch (err){
+    } catch (err) {
       throw new Error(err);
     }
   }
-  
+
   /**
    * Gets a user record by Enauk
    * @param  {String}      email [Email Address]
@@ -68,21 +68,21 @@ module.exports = class UserModel {
                          FROM users
                          WHERE email = $1`;
       const values = [email];
-  
+
       // Execute SQL statment
       const result = await db.query(statement, values);
 
       if (result.rows?.length) {
         return result.rows[0]
       }
-  
+
       return null;
 
-    } catch(err) {
+    } catch (err) {
       throw new Error(err);
     }
   }
-  
+
   /**
    * Gets a user record by ID
    * @param  {String}      id [User ID]
@@ -96,17 +96,17 @@ module.exports = class UserModel {
                          FROM users
                          WHERE id = $1`;
       const values = [id];
-  
+
       // Execute SQL statment
       const result = await db.query(statement, values);
-      
+
       if (result.rows?.length) {
         return result.rows[0]
       }
-  
+
       return null;
 
-    } catch(err) {
+    } catch (err) {
       throw new Error(err);
     }
   }

@@ -19,7 +19,7 @@ module.exports = (app) => {
 
   // Creates a session
   app.use(
-    session({  
+    session({
       secret: SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
@@ -31,5 +31,5 @@ module.exports = (app) => {
   );
 
   return app;
-  
+
 }

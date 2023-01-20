@@ -19,20 +19,20 @@ module.exports = class UserService {
 
       return user;
 
-    } catch(err) {
+    } catch (err) {
       throw createError(400, err.message);
     }
 
   };
 
-  async update(data){
+  async update(data) {
 
-    try{
+    try {
       // Check if user exists
       const user = await UserModelInstance.updateUser(data)
 
       return user;
-    } catch(err){
+    } catch (err) {
       throw createError(400, err.message);
     }
   };
