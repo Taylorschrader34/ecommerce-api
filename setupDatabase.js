@@ -23,7 +23,7 @@ const { DB } = require('./config');
         status      VARCHAR(50)     NOT NULL,
         created     DATE,
         modified    DATE
-    );
+    );ß
   `
 
   const productsTableStmt = `
@@ -86,7 +86,7 @@ const { DB } = require('./config');
 
     await db.end();
 
-  } catch(err) {
+  } catch (err) {
     console.log("ERROR CREATING ONE OR MORE TABLES: ", err);
   }
 

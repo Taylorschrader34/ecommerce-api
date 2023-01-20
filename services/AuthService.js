@@ -20,7 +20,7 @@ module.exports = class AuthService {
       // User doesn't exist, create new user record
       return await UserModelInstance.createUser(data);
 
-    } catch(err) {
+    } catch (err) {
       throw createError(500, err);
     }
 
@@ -46,7 +46,7 @@ module.exports = class AuthService {
 
       return user;
 
-    } catch(err) {
+    } catch (err) {
       throw createError(500, err);
     }
 
