@@ -13,6 +13,8 @@ To easily populate your database with the requisite tables, `npm run create-db`.
 Once the app is running locally, you can access the API at `http://localhost:<your-port>`
 
 ## Testing
+Swagger documentation available at `http://localhost:<your-port>/docs`
+
 You can use various HTTP clients such as [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/) to make requests to the API endpoints.
 
 **Note:** Some endpoints are protected and require authentication.  In order to properly access these endpoints, you will need to have a session cookie present when making your request.  This is accessed by hitting the `/auth/login` endpoint first.  HTTP clients will automatically store cookies and send them with subsequent requests.
@@ -22,6 +24,8 @@ You can use various HTTP clients such as [Postman](https://www.postman.com/) or 
 - [Setting up Postman](https://learning.postman.com/docs/getting-started/settings/)
 - [Using pgAdmin](https://www.pgadmin.org/docs/pgadmin4/development/getting_started.html)
 - [Postgres Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
+- [Documenting your API with Swagger](https://swagger.io/resources/articles/documenting-apis-with-swagger/)
+
 
 ## Options for Extension
 - Add additional API endpoints (endpoints for categories, addresses, etc)

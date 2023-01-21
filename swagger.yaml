@@ -1,0 +1,78 @@
+openapi: 3.0.1
+info:
+  description: E-commerce REST API Practice
+  version: 1.0.0
+  title: E-commerce REST API
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      description: Register a new user
+      operationId: ''
+      responses:
+        '200':
+          description: 200 Success
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+
+                    }
+        '409':
+          description: 400 Conflict
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+
+                    }
+        '500':
+          description: 500 Internal Server Error
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+
+                    }
+  /auth/login:
+    post:
+      summary: Login a user to their account
+      description: Login a user to their account
+      operationId: ''
+      responses:
+        '200':
+          description: 200 Success
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+
+                    }
+        '409':
+          description: 400 Conflict
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+
+                    }
+        '500':
+          description: 500 Internal Server Error
+          content:
+            application/json:
+              examples:
+                user:
+                  value: |-
+                    {
+
+                    }
